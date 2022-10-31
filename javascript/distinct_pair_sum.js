@@ -1,5 +1,24 @@
 function distinctPairSum(arr, k) {
   // type your code here
+
+  let hash = {}
+  let output = []
+
+  if (arr.length < 2) {
+    return []
+  }
+
+  for (let i = 0; i < arr.length-1; i++) {
+    if (arr[i]+arr[i+1]===k && !hash[arr[i]] && !hash[arr[i+1]]) {
+      output.push([arr[i], arr[i+1]])
+      hash[arr[i]] = "yes"
+      
+    }
+  }
+
+  // console.log(hash)
+
+  return output
 }
 
 if (require.main === module) {
@@ -9,8 +28,8 @@ if (require.main === module) {
 
   console.log("");
 
-  console.log("Expecting: [[2, 8]]");
-  console.log("=>", distinctPairSum([3, 4, 2, 1, 5, 2, 8, 2], 10));
+  console.log("Expecting: [[10, 0]]");
+  console.log("=>", distinctPairSum([10, 0], 10));
 }
 
 module.exports = distinctPairSum;
